@@ -2,6 +2,8 @@ angular.module("angularApp", ['ngRoute'])
 
 .constant("baseUrl", "http://localhost:3000/")
 .config(function($routeProvider, $locationProvider){
+    $locationProvider.html5Mode({enabled:true,  
+  requireBase: false});
     $routeProvider.when("/add", {
         templateUrl: '/plantillas/e2form.html'
     });
@@ -26,7 +28,7 @@ angular.module("angularApp", ['ngRoute'])
     $scope.showList = function(){
        $location.path('/');
     }
-    
+
     $scope.nuevo = function() {    
         var peticion = servicioPersonas.addPersona($scope.personaNueva);
         peticion.success(function(persona) {
