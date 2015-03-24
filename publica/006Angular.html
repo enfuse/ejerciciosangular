@@ -1,0 +1,109 @@
+<html ng-app="miapp">
+<head>
+<style type="text/css">
+	
+	.azul {
+
+		color:blue;
+	}
+
+	.verde {
+
+		color:green;
+	}
+	.amarillo {
+
+		color:yellow;
+	}
+
+</style>
+
+<script src="angular.min.js">
+
+
+</script>
+
+<script>
+angular.module("miapp",[]).controller("controladorHola",function($scope){
+
+
+$scope.array=["santander","pamplona","bilbao"];
+
+persona1={};
+persona1.nombre="pepe";
+persona1.apellidos="perez";
+persona1.ciudad="santander";
+
+
+
+persona2={};
+persona2.nombre="ana";
+persona2.apellidos="sanchez";
+persona2.ciudad="pamplona";
+
+persona3={};
+persona3.nombre="maria";
+persona3.apellidos="gomez";
+persona3.ciudad="bilbao";
+
+persona4={};
+persona4.nombre="david";
+persona4.apellidos="martinez";
+persona4.ciudad="pamplona";
+
+$scope.listaPersonas=[];
+$scope.listaPersonas.push(persona1);
+$scope.listaPersonas.push(persona2);
+$scope.listaPersonas.push(persona3);
+$scope.listaPersonas.push(persona4);
+
+
+$scope.personaNueva={nombre:"miguel",apellidos:"sanchez"};
+
+console.log($scope.listaPersonas);
+
+$scope.pulsarItem=function(persona) {
+
+		
+		$scope.personaSeleccionada=persona;
+		console.log($scope.personaSeleccionada);
+}
+$scope.nuevo=function() {
+
+	$scope.listaPersonas.push(angular.copy($scope.personaNueva));
+}
+
+$scope.filtrarElementos =function(item) {
+
+
+	return item.nombre=="pepe" || item.nombre=="ana";
+};
+
+});
+
+</script>
+</head>
+<body ng-controller="controladorHola">
+
+<select  ng-model="seleccionado">
+
+<option>seleciona uno</option>
+<option ng-repeat="elemento in array">{{elemento}}</option>
+</select>
+
+
+<p ng-repeat="persona in listaPersonas | filter: filtrarElementos"
+ng-click="pulsarItem(persona)">
+
+{{$index+1}}
+{{persona.nombre}}
+{{persona.apellidos}}
+{{persona.ciudad}}
+
+</p>
+
+Numero items:<input type="text" ng-model="numero"/> 
+
+
+</body>
+</html>

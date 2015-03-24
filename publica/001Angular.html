@@ -1,0 +1,28 @@
+<html ng-app="miapp">
+<head>
+<script src="angular.min.js">
+</script>
+<script>
+angular.module("miapp",[]).controller("controladorHola",function($scope){
+
+	$scope.persona={};
+	$scope.persona.nombre="cecilio";
+	$scope.persona.apellidos="alvarez";
+	$scope.pulsar=function() {
+
+		$scope.persona.nombre="pedro";
+		$scope.persona.apellidos="gomez";
+	}
+});
+
+</script>
+</head>
+<body ng-controller="controladorHola">
+
+{{persona.nombre}}
+{{persona.apellidos}}
+<input type="button" ng-click="pulsar()" value="aceptar" />
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<html ng-app="miapp">
+<head>
+<style type="text/css">
+	
+	.azul {
+
+		color:blue;
+	}
+
+	.verde {
+
+		color:green;
+	}
+
+</style>
+
+<script src="angular.min.js">
+
+
+</script>
+
+<script>
+angular.module("miapp",[]).controller("controladorHola",function($scope){
+
+persona1={};
+persona1.nombre="pepe";
+persona1.apellidos="perez";
+
+
+
+persona2={};
+persona2.nombre="ana";
+persona2.apellidos="sanchez";
+
+persona3={};
+persona3.nombre="ana";
+persona3.apellidos="sanchez";
+
+persona4={};
+persona4.nombre="ana";
+persona4.apellidos="sanchez";
+
+$scope.listaPersonas=[];
+$scope.listaPersonas.push(persona1);
+$scope.listaPersonas.push(persona2);
+$scope.listaPersonas.push(persona3);
+$scope.listaPersonas.push(persona4);
+
+
+console.log($scope.listaPersonas);
+
+$scope.pulsar=function(persona) {
+
+	console.log(persona.nombre);
+
+}
+
+$scope.cambiarColor=function(color) {
+
+	$scope.miclase=color;
+}
+
+});
+
+</script>
+</head>
+<body ng-controller="controladorHola">
+
+<p ng-repeat="persona in listaPersonas" ng-class="$even ?  'azul':'verde'">
+
+{{$index+1}} {{persona.nombre}}{{persona.apellidos}}
+
+<input type="button" ng-click="pulsar(persona)" value="pulsar"/>
+
+</p>
+
+<p ng-class="miclase">mi parrafo</p>
+
+<input type="button" ng-click="cambiarColor('azul')" value="azul"/>
+<input type="button" ng-click="cambiarColor('verde')" value="verde"/>
+
+
+
+
+</body>
+</html>

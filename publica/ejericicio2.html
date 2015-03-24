@@ -1,0 +1,51 @@
+<html ng-app="miapp">
+<head>
+<script src="angular.min.js">
+</script>
+<script>
+angular.module("miapp",[]).controller("ctrl1",function($scope, $rootScope){
+	$scole.lista = [];
+	$scole.persona = [];
+
+	
+	$rootScope.nombre="cecilio";
+	$scope.pulsar=function() {
+		$rootScope.$broadcast("cambiarDato", {"nombre":"pepito"});
+		
+	}
+
+	
+})
+
+.controller("ctrl2",function($scope, $rootScope){
+
+$rootScope.nombre="cecilio";
+	$scope.$on('cambiarDato', function(evento,dato){
+		console.log(dato);
+	});
+
+})
+
+.controller("ctrl3",function($scope, $rootScope){
+
+
+
+	$scope.pulsar=function() {
+		$rootScope.$emit("cambiarDato", {"nombre":"pepito"});
+		
+	}
+
+})
+;
+
+</script>
+</head>
+<body ng-controller="controladorHola">
+
+{{persona.nombre}}
+{{persona.apellidos}}
+<input type="button" ng-click="pulsar()" value="aceptar" />
+
+
+</body>
+</html>

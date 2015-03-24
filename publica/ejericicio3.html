@@ -1,0 +1,52 @@
+<html ng-app="miapp">
+<head>
+<script src="angular.min.js">
+</script>
+<script>
+angular.module("miapp",[]).controller("ctrl1",function($scope, $rootScope){
+	$scope.lista = [];
+	$scope.persona = [];
+	$scope.selecciona = function(persona){
+		
+		$rootScope.$broadcast("selecciona", persona);
+	}
+
+	var persona1={};
+	persona1.nombre="pepe";
+	persona1.apellidos="perez";
+
+	var persona2={};
+	persona2.nombre="ana";
+	persona2.apellidos="sanchez";
+	
+	$scope.lista.push(persona1);
+	$scope.lista.push(persona2);
+	
+})
+
+.controller("ctrl2",function($scope, $rootScope){
+	$scope.$on("selecciona", function(event,persona){
+		$scope.persona = persona;
+	});
+
+})
+;
+
+</script>
+</head>
+<body >
+<div ng-controller="ctrl1">
+<p ng-repeat="persona in lista" ng-click="selecciona(persona)">
+{{persona.nombre}}
+{{persona.apellidos}}
+</p>
+</div>
+<div  ng-controller="ctrl2">
+	<input type="text" ng-model="persona.nombre">
+	<input type="text" ng-model="persona.apellidos">
+</div>
+
+<p></p>
+<p></p>
+</body>
+</html>

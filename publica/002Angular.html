@@ -1,0 +1,40 @@
+<html ng-app="miapp">
+<head>
+<script src="angular.min.js">
+</script>
+
+<script>
+angular.module("miapp",[]).controller("controladorHola",function($scope){
+
+	$scope.persona={};
+	$scope.persona.nombre="cecilio";
+	$scope.persona.apellidos="alvarez";
+	$scope.persona.edad=40;
+
+	$scope.pulsar=function() {
+
+		$scope.persona.nombre="pedro";
+		$scope.persona.apellidos="gomez";
+	}
+});
+
+</script>
+</head>
+<body ng-controller="controladorHola">
+<ul>
+<li>{{persona.nombre  | uppercase }}</li>
+<li>{{persona.apellidos}}</li>
+<li>{{persona.edad*2}}</li>
+<li>{{persona.nombre+ persona.apellidos}}</li>
+
+
+</ul>
+Nombre:<input type="text" ng-model="persona.nombre" />
+
+<input type="button" ng-click="pulsar()" value="aceptar" />
+
+
+
+
+</body>
+</html>
