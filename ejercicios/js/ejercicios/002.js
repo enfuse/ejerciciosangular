@@ -15,7 +15,6 @@ angular.module("angularApp", ['ngRoute'])
     $scope.vistaFormulario = false;
     $scope.botonVistaFormulario = true;
 
-
     var peticion = servicioPersonas.listaPersonas();
     peticion.success(function(personas) {
         $scope.personas = personas
@@ -24,9 +23,11 @@ angular.module("angularApp", ['ngRoute'])
 	$scope.showForm = function(){
 	   $location.path('/add');
 	}
-
-    $scope.nuevo = function() {
-        //$scope.personas.push($scope.personaNueva);        
+    $scope.showList = function(){
+       $location.path('/');
+    }
+    
+    $scope.nuevo = function() {    
         var peticion = servicioPersonas.addPersona($scope.personaNueva);
         peticion.success(function(persona) {
             $scope.personas.push(persona);
@@ -45,11 +46,7 @@ angular.module("angularApp", ['ngRoute'])
         }
     }
     $scope.resetPersonaNueva = function() {
-        $scope.personaNueva = {
-            nombre: '',
-            apellidos: '',
-            edad: '',
-        };
+        $scope.personaNueva = {nombre: '', apellidos: '', edad: ''};
     }
     $scope.resetPersonaNueva();
 })

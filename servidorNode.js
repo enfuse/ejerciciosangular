@@ -38,6 +38,5 @@ app.delete("/personas/nombre/:nombre", function(req,res){
 
 app.use("/",express.static(__dirname+"/ejercicios",'public'));
 var servidor= app.listen(3000,function() {
-	console.log(listaPersonas);
-	console.log("servidor arrancado");
+	console.log("--Server Running--\n http://localhost:3000");
 });
