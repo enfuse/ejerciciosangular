@@ -1,21 +1,28 @@
-angular.module("angularApp", [])
+angular.module("angularApp", ['ngRoute'])
 
+.constant("baseUrl", "http://localhost:3000/")
+.config(function($routeProvider, $locationProvider){
+    $routeProvider.when("/add", {
+        templateUrl: '/plantillas/e2form.html'
+    });
+    $routeProvider.otherwise({
+        templateUrl: '/plantillas/e2lista.html'
+    });
+})
 .controller("controladorPersonas", 
-  function($scope, $http, $log , $window, servicioPersonas) {
+  function($scope, $http, $log , $location, $window, servicioPersonas) {
     $scope.vistaLista = true;
     $scope.vistaFormulario = false;
     $scope.botonVistaFormulario = true;
 
 
     var peticion = servicioPersonas.listaPersonas();
-
     peticion.success(function(personas) {
         $scope.personas = personas
     });
 
 	$scope.showForm = function(){
-		$scope.vistaFormulario = true;
-		$scope.botonVistaFormulario = false;
+	   $location.path('/add');
 	}
 
     $scope.nuevo = function() {
@@ -25,6 +32,7 @@ angular.module("angularApp", [])
             $scope.personas.push(persona);
         });
         $scope.resetPersonaNueva();
+        $location.path('/');
     }
     $scope.borrar = function(persona) {
     	if($window.confirm("¿Seguro que quieres borrar?")){
@@ -44,8 +52,6 @@ angular.module("angularApp", [])
         };
     }
     $scope.resetPersonaNueva();
-    //$log.log("hola");
-    //$window.alert("alert hola");
 })
 
 .service('servicioPersonas', function($http){

@@ -33,62 +33,57 @@
                     <div class="col-xs-6">
                         <input type="button" class="btn btn-info btn-xs" value="Mostrar formulario" ng-show="botonVistaFormulario" ng-click="showForm()">
                         <div class="well" ng-show="vistaFormulario">
-                            <form id="loginForm" method="POST" action="/login/" novalidate="novalidate" >
-                                <div class="form-group">
-                                    <label for="nombre" class="control-label">Nombre</label>
-                                    <input ng-model="personaNueva.nombre" type="text" class="form-control" id="nombre" name="nombre" ng-required value="" required="" title="Introduce tu nombre" placeholder="Ej: Jacinto">
-                                    <span class="help-block"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="apellidos" class="control-label">Apellidos</label>
-                                    <input ng-model="personaNueva.apellidos" type="text" class="form-control" id="apellidos" ng-required  name="apellidos" value="" required="" placeholder="Ej: Peña Aranda">
-                                    <span class="help-block"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="edad" class="control-label">Edad</label>
-                                    <input ng-model="personaNueva.edad" type="text" class="form-control" id="edad" name="edad" value="" required="" placeholder="Ej: 21">
-                                    <span class="help-block"></span>
-                                </div>
-                                <div id="loginErrorMsg" class="alert alert-error hide">Valores incorrectos</div>
-                                <!--div class="checkbox">
-                                                                    <label>
-                                                                            <input type="checkbox" name="remember" id="remember"> bla bla
-                                                                    </label>
-                                                                    <p class="help-block">bla bla</p>
-                            </div-->
-                            <button type="button" class="btn btn-success btn-block" value="nuevo" ng-click="nuevo()">Enviar</button>
-                            <a href="/forgot/" disabled class="btn btn-default btn-block">Saludar</a>
-                        </form>
+    <form id="loginForm" method="POST" action="/login/" novalidate="novalidate" >
+        <div class="form-group">
+            <label for="nombre" class="control-label">Nombre</label>
+            <input ng-model="personaNueva.nombre" type="text" class="form-control" id="nombre" name="nombre" ng-required value="" required="" title="Introduce tu nombre" placeholder="Ej: Jacinto">
+            <span class="help-block"></span>
+        </div>
+        <div class="form-group">
+            <label for="apellidos" class="control-label">Apellidos</label>
+            <input ng-model="personaNueva.apellidos" type="text" class="form-control" id="apellidos" ng-required  name="apellidos" value="" required="" placeholder="Ej: Peña Aranda">
+            <span class="help-block"></span>
+        </div>
+        <div class="form-group">
+            <label for="edad" class="control-label">Edad</label>
+            <input ng-model="personaNueva.edad" type="text" class="form-control" id="edad" name="edad" value="" required="" placeholder="Ej: 21">
+            <span class="help-block"></span>
+        </div>
+        <div id="loginErrorMsg" class="alert alert-error hide">Valores incorrectos</div>
+    <button type="button" class="btn btn-success btn-block" value="nuevo" ng-click="nuevo()">Enviar</button>
+    <a href="/forgot/" disabled class="btn btn-default btn-block">Saludar</a>
+</form>
                     </div>
                 </div>
                 <div class="col-xs-6">
                     <!--p class="lead">Datos! <span class="text-success">*</span></p-->
+                    
                     <div class="panel panel-default" ng-show="vistaLista">
-                        <!-- Default panel contents -->
-                        <div class="panel-heading">Personas</div>
-                        <!-- Table -->
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>Edad</th>
-                                    <th>Op</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="persona in personas">
-                                    <th scope="row">{{$index}}</th>
-                                    <td>{{persona.nombre}}</td>
-                                    <td>{{persona.apellidos}}</td>
-                                    <td>{{persona.edad}}</td>
-                                    <td><input type="button" ng-click="borrar(persona)" class="btn btn-xs btn-danger" value="Borrar"></td>
-                                </tr>
+    <!-- Default panel contents -->
+    <div class="panel-heading">Personas</div>
+    <!-- Table -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Op</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="persona in personas">
+                <th scope="row">{{$index}}</th>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.apellidos}}</td>
+                <td>{{persona.edad}}</td>
+                <td><input type="button" ng-click="borrar(persona)" class="btn btn-xs btn-danger" value="Borrar"></td>
+            </tr>
 
-                            </tbody>
-                        </table>
-                    </div>
+        </tbody>
+    </table>
+</div>
                     <!--ul class="list-unstyled" style="line-height: 2">
                                                                         <li><span class="fa fa-exclamation-triangle text-danger"></span> bla bla bla </li>
                                                                         <li><span class="fa fa-check text-success"></span> bla bla bla</li>

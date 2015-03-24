@@ -1,0 +1,28 @@
+<div class="panel panel-default" ng-show="vistaLista">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Personas</div>
+    <!-- Table -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Op</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="persona in personas">
+                <th scope="row">{{$index}}</th>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.apellidos}}</td>
+                <td>{{persona.edad}}</td>
+                <td><input type="button" ng-click="borrar(persona)" class="btn btn-xs btn-danger" value="Borrar"></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
+<button ng-click='showForm()' class="btn btn-primary">Añadir persona</button>
