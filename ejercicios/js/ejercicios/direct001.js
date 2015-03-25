@@ -4,6 +4,10 @@ angular.module("angularApp", [])
     $scope.persona = {};
     $scope.persona.nombre = "Fulano";
     $scope.persona.apellidos = "Detal";
+    $scope.cambiar = function(){
+        // de primeras no va, hace falta un watcher (la directiva no actualiza)
+        $scope.persona.apellidos = "Nodetal";
+    }
 })
 
 
@@ -37,7 +41,15 @@ angular.module("angularApp", [])
                 console.log(persona);
                 //element.text(persona[propiedadExpersion]);
                 element.text( //para que funcionen los filtros... un poco guarro
-                    scope.$eval(propiedadExpersion,persona));
+                scope.$eval(propiedadExpersion,persona));
+
+                var unwatch = function(scope){
+                    return scope.$eval(propiedadExpersion, persona);
+                }
+                scope.$watch(unwatch, function(nuevo, viejo){
+                    element.text(nuevo);
+                });
+
             }
         }
     })
