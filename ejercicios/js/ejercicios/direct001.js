@@ -35,7 +35,9 @@ angular.module("angularApp", [])
                 var persona = scope[attrs["directv1"]];
                 var propiedadExpersion=attrs["propiedad"];
                 console.log(persona);
-                element.text(persona[propiedadExpersion]);
+                //element.text(persona[propiedadExpersion]);
+                element.text( //para que funcionen los filtros... un poco guarro
+                    scope.$eval(propiedadExpersion,persona));
             }
         }
     })
