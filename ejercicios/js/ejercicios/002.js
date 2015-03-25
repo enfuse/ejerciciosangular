@@ -7,6 +7,12 @@ angular.module("angularApp", ['ngRoute'])
     $routeProvider.when("/add", {
         templateUrl: '/plantillas/e2form.html'
     });
+    $routeProvider.when("/ver-compra", {
+        templateUrl: '/plantillas/e2compra.html'
+    });
+    $routeProvider.when("/list", {
+        templateUrl: '/plantillas/e2lista.html'
+    });
     $routeProvider.otherwise({
         templateUrl: '/plantillas/e2lista.html'
     });

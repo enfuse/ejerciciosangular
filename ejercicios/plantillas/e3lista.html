@@ -1,4 +1,4 @@
-<div class="panel panel-default" ng-show="vistaLista">
+<div class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading">Personas</div>
     <!-- Table -->
@@ -19,7 +19,7 @@
                 <td>{{persona.nombre}}</td>
                 <td>{{persona.apellidos}}</td>
                 <td>{{persona.edad}}</td>
-                <td><input type="button" ng-click="verCompra(persona)" class="btn btn-xs btn-success" value="Ver Compra"></td>
+                <td><input type="button" ng-click="showCart(persona)" class="btn btn-xs btn-success" value="Ver Compra"></td>
                 <td><input type="button" ng-click="borrar(persona)" class="btn btn-xs btn-danger" value="Borrar"></td>
             </tr>
 

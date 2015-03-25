@@ -23,15 +23,27 @@ app.get("/personas", function (req,res){
 	res.send(listaPersonas);
 });
 
+app.get("/personas/cart/:nombre", function (req,res){
+	var shoppingCart = [];
+	var shop1={concepto:"mac", precio: 2000}
+	var shop2={concepto:"pc", precio: 1000}
+	shoppingCart.push(shop1);
+	shoppingCart.push(shop2);
+
+	res.send(shoppingCart);
+});
+
 app.post("/personas", function(req,res){
 	listaPersonas.push(req.body);	
 	res.send(req.body);
 });
 
 app.delete("/personas/nombre/:nombre", function(req,res){
+
 	listaPersonas=_.filter(listaPersonas, function(persona){
 		return persona.nombre != req.params.nombre;
 	});
+
 	res.send(req.params.nombre);
 	//console.log(listaPersonas);
 });

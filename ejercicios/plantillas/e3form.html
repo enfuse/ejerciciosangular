@@ -1,0 +1,23 @@
+<div class="well">
+    <form id="loginForm" method="POST" action="">
+        <div class="form-group">
+            <label for="nombre" class="control-label">Nombre</label>
+            <input ng-model="personaNueva.nombre" type="text" class="form-control" id="nombre" name="nombre" ngRequired value="" required="" title="Introduce tu nombre" placeholder="Ej: Jacinto">
+            <span class="help-block"></span>
+        </div>
+        <div class="form-group">
+            <label for="apellidos" class="control-label">Apellidos</label>
+            <input ng-model="personaNueva.apellidos" type="text" class="form-control" id="apellidos" required  name="apellidos" value="" required="" placeholder="Ej: Peña Aranda">
+            <span class="help-block"></span>
+        </div>
+        <div class="form-group">
+            <label for="edad" class="control-label">Edad</label>
+            <input ng-model="personaNueva.edad" type="text" class="form-control" id="edad" name="edad" value="" required="" placeholder="Ej: 21">
+            <span class="help-block"></span>
+        </div>
+        <div id="loginErrorMsg" class="alert alert-error hide">Valores incorrectos</div>
+    <button type="submit" class="btn btn-success btn-block" value="nuevo" ng-click="nuevo()">Enviar</button>
+    <a href="/forgot/" disabled class="btn btn-default btn-block">Saludar</a>
+</form>
+</div>
+<button ng-click='showList()' class="btn btn-primary">Volver al listado</button>
