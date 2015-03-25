@@ -1,28 +1,32 @@
 angular.module("angularApp", [])
 
 .controller('ctrlUno',  function($scope){
-    $scope.persona = {};
+    /*$scope.persona = {};
     $scope.persona.nombre = "Fulano";
     $scope.persona.apellidos = "Detal";
     $scope.cambiar = function(){
         // de primeras no va, hace falta un watcher (la directiva no actualiza)
         $scope.persona.apellidos = "Nodetal";
+    }*/
+    $scope.titulo = "mi caja";
+    $scope.contenido = "Mi contenido";
+})
+.directive("caja", function(){
+    return {
+        scope: {titulo : "=", contenido : "="},
+        restrict: "EA",
+        transclude: true,
+        template: "<div><div> {{titulo}} </div><div> {{contenido}} </div></div>",
+        replace: true // Reemplaza el texto de la directiva
     }
 })
-
-
-.controller('ctrlDos',  function($scope){
-    $scope.persona = {};
-    $scope.persona.nombre = "Ana";
-    $scope.persona.apellidos = "Pérez";
-})
-
+/*
 .directive("directv1", 
     function(){
         return {
             /**
              * AEC => La directiva se puede aplicar como Elemento, atributo, clase. 
-            */
+            *
             //restrict:"AEC", 
             //template: "Kaixo directiva!!"
             templateUrl: "plantillas/e2form.html",
@@ -53,5 +57,5 @@ angular.module("angularApp", [])
             }
         }
     })
-
+*/
 ;
